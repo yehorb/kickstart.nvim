@@ -94,6 +94,15 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+-- Builtin search tools
+vim.keymap.set('n', '<C-b>', ':buffer ', { desc = 'Invoke the buffer search' })
+vim.keymap.set('n', '<C-p>', ':find ', { desc = 'Invoke the file search' })
+
+-- Avoid <C-v>, as it is the Paste hotkey in the Windows Terminal
+vim.keymap.set('n', 'vv', '<C-v>', { desc = 'Enter the Visual Block mode' })
+
+vim.keymap.set({ 'n', 'v' }, 'Y', '"*y', { desc = '[Y]ank into the OS clipboard' })
+
 -- [[ Basic Autocommands ]]
 
 -- Highlight when yanking (copying) text
