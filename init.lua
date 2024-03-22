@@ -45,7 +45,7 @@ vim.opt.splitbelow = true
 
 -- Sets how neovim will display certain whitespace characters in the editor.
 vim.opt.list = true
-vim.opt.listchars = { eol = '¶', tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.listchars = { eol = '¶', tab = '→·', trail = '·', nbsp = '␣' }
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
@@ -55,6 +55,21 @@ vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
+
+-- Set <EOL> to <CR> by default
+vim.opt.fileformat = 'unix'
+
+-- Allow the detection of <CR><LF> <EOL>
+vim.opt.fileformats = { 'unix', 'dos' }
+
+-- Set PowerShell Core as the default shell
+vim.cmd [[
+let &shell = executable('pwsh') ? 'pwsh' : 'powershell'
+let &shellcmdflag = '-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();$PSDefaultParameterValues[''Out-File:Encoding'']=''utf8'';'
+let &shellredir = '2>&1 | %%{ "$_" } | Out-File %s; exit $LastExitCode'
+let &shellpipe  = '2>&1 | %%{ "$_" } | Tee-Object %s; exit $LastExitCode'
+set shellquote= shellxquote=
+]]
 
 -- [[ Basic Keymaps ]]
 
