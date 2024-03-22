@@ -161,8 +161,8 @@ require('lazy').setup({
       { -- If encountering errors, see telescope-fzf-native README for installation instructions
         'nvim-telescope/telescope-fzf-native.nvim',
         build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build',
-        -- TODO: `libfzf.dll` in the plugin direcotory
-        cond = function() return vim.fn.executable 'cmake' == 1 end,
+        ---@diagnostic disable-next-line: redundant-parameter
+        cond = function(self) return vim.fn.findfile('libfzf.dll', self.dir .. '/build') ~= '' or vim.fn.executable 'cmake' == 1 end,
       },
       { 'nvim-telescope/telescope-ui-select.nvim' },
 
