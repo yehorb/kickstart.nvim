@@ -148,7 +148,7 @@ require('lazy').setup({
       { '[g', function() require('gitsigns').prev_hunk() end, desc = 'Previous Git hunk' },
       { '<leader>gl', function() require('gitsigns').blame_line() end, desc = 'View Git blame' },
       { '<leader>gL', function() require('gitsigns').blame_line { full = true } end, desc = 'View full Git blame' },
-      { '<leader>gp', function() require('gitsigns').preview_hunk() end, desc = 'Preview Git hunk inline' },
+      { '<leader>gp', function() require('gitsigns').preview_hunk_inline() end, desc = 'Preview Git hunk inline' },
       { '<leader>gP', function() require('gitsigns').preview_hunk() end, desc = 'Preview Git hunk' },
       { '<leader>gh', function() require('gitsigns').reset_hunk() end, desc = 'Reset Git hunk' },
       { '<leader>gr', function() require('gitsigns').reset_buffer() end, desc = 'Reset Git buffer' },
