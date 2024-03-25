@@ -62,6 +62,9 @@ vim.opt.fileformat = 'unix'
 -- Allow the detection of <CR><LF> <EOL>
 vim.opt.fileformats = { 'unix', 'dos' }
 
+-- Add workdir to the search path
+vim.opt.path:append '**'
+
 -- Set PowerShell Core as the default shell
 vim.cmd [[
 let &shell = executable('pwsh') ? 'pwsh' : 'powershell'
