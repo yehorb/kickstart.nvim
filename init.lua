@@ -432,7 +432,8 @@ require('lazy').setup({
       --    :Mason
       --
       --  You can press `g?` for help in this menu.
-      require('mason').setup()
+      local path = require 'mason-core.path'
+      require('mason').setup { install_root_dir = path.concat { os.getenv 'USERPROFILE', 'Tools', 'mason' } }
 
       -- You can add other tools here that you want Mason to install
       -- for you, so that they are available from within Neovim.
