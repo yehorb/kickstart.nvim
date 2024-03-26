@@ -424,6 +424,15 @@ require('lazy').setup({
             },
           },
         },
+        yamlls = {
+          settings = {
+            yaml = {
+              schemas = {
+                ['https://raw.githubusercontent.com/SigmaHQ/sigma-specification/main/sigma-schema.json'] = '*/sigma/**/*.yaml',
+              },
+            },
+          },
+        },
       }
 
       -- Ensure the servers and tools above are installed
