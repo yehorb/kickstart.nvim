@@ -152,6 +152,7 @@ require('lazy').setup({
         changedelete = { text = '~' },
       },
     },
+    event = 'User VeryLazy',
     keys = {
       { '<leader>g', desc = '[G]it' },
       { ']g', function() require('gitsigns').next_hunk() end, desc = 'Next Git hunk' },
