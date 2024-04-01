@@ -650,6 +650,29 @@ require('lazy').setup({
 
       -- ... and there is more!
       --  Check out: https://github.com/echasnovski/mini.nvim
+      require('mini.files').setup {
+        mappings = {
+          go_in = '',
+          go_in_plus = '',
+          go_out = '',
+          go_out_plus = 'h',
+          reset = 'r',
+          synchronize = 'R',
+        },
+      }
+      vim.keymap.set('n', '-', function()
+        require('mini.files').open(vim.api.nvim_buf_get_name(0))
+        require('mini.files').reveal_cwd()
+      end)
+      vim.api.nvim_create_autocmd('User', {
+        group = vim.api.nvim_create_augroup('kickstart-mini-files', { clear = true }),
+        pattern = 'MiniFilesBufferCreate',
+        callback = function(event)
+          local map = function(keys, func) vim.keymap.set('n', keys, func, { buffer = event.data.buf_id }) end
+          map('l', function() require('mini.files').go_in { close_on_file = true } end)
+          map('<cr>', function() require('mini.files').go_in { close_on_file = true } end)
+        end,
+      })
     end,
   },
   { -- Highlight, edit, and navigate code
