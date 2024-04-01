@@ -106,6 +106,8 @@ vim.keymap.set('n', 'vv', '<C-v>', { desc = 'Enter the Visual Block mode' })
 
 vim.keymap.set({ 'n', 'v' }, 'Y', '"*y', { desc = '[Y]ank into the OS clipboard' })
 
+if vim.fn.executable 'lazygit' then vim.keymap.set('n', '<leader>gg', '<cmd>tabnew term://lazygit<cr>', { desc = 'Open `lazygit` in a new tab' }) end
+
 -- [[ Abbreviations ]]
 
 -- Open `:help` in a vertical split to the right by default
