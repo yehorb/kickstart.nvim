@@ -110,7 +110,7 @@ vim.keymap.set({ 'n', 'v' }, 'Y', '"*y', { desc = '[Y]ank into the OS clipboard'
 
 -- Open `:help` in a vertical split to the right by default
 vim.cmd [[
-cabbrev help vertical botright help
+cnoreabbrev help vertical botright help
 ]]
 
 -- [[ Basic Autocommands ]]
