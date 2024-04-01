@@ -656,7 +656,7 @@ require('lazy').setup({
           go_in_plus = '',
           go_out = '',
           go_out_plus = 'h',
-          reset = 'r',
+          reset = '',
           synchronize = 'R',
         },
       }
@@ -671,6 +671,10 @@ require('lazy').setup({
           local map = function(keys, func) vim.keymap.set('n', keys, func, { buffer = event.data.buf_id }) end
           map('l', function() require('mini.files').go_in { close_on_file = true } end)
           map('<cr>', function() require('mini.files').go_in { close_on_file = true } end)
+          map('r', function()
+            require('mini.files').reset()
+            require('mini.files').reveal_cwd()
+          end)
         end,
       })
     end,
