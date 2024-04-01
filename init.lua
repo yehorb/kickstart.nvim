@@ -727,5 +727,13 @@ require('lazy').setup({
   },
 })
 
+-- [[ Tools ]]
+
+-- `ripgrep`
+if vim.fn.executable 'rg' then
+  vim.opt.grepformat:append '%f:%l:%c:%m'
+  vim.opt.grepprg = 'rg --hidden --no-heading --smart-case --vimgrep'
+end
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
