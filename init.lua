@@ -106,6 +106,13 @@ vim.keymap.set('n', 'vv', '<C-v>', { desc = 'Enter the Visual Block mode' })
 
 vim.keymap.set({ 'n', 'v' }, 'Y', '"*y', { desc = '[Y]ank into the OS clipboard' })
 
+-- [[ Abbreviations ]]
+
+-- Open `:help` in a vertical split to the right by default
+vim.cmd [[
+cabbrev help vertical botright help
+]]
+
 -- [[ Basic Autocommands ]]
 
 -- Highlight when yanking (copying) text
