@@ -106,7 +106,14 @@ vim.keymap.set('n', 'vv', '<C-v>', { desc = 'Enter the Visual Block mode' })
 
 vim.keymap.set({ 'n', 'v' }, 'Y', '"*y', { desc = '[Y]ank into the OS clipboard' })
 
-if vim.fn.executable 'lazygit' then vim.keymap.set('n', '<leader>gg', '<cmd>tabnew term://lazygit<cr>', { desc = 'Open `lazygit` in a new tab' }) end
+if vim.fn.executable 'lazygit' then
+  vim.keymap.set('n', '<leader>gg', function()
+    local bufnr = vim.fn.bufadd 'term://lazygit'
+    vim.keymap.set('t', 'gt', '<C-\\><C-n>gt', { buffer = bufnr, silent = true, desc = 'Exit terminal mode and switch tabs' })
+    vim.keymap.set('t', 'gT', '<C-\\><C-n>gT', { buffer = bufnr, silent = true, desc = 'Exit terminal mode and switch tabs' })
+    vim.cmd('$tab sbuffer ' .. bufnr .. '|startinsert')
+  end, { desc = 'Open `lazygit` in a new tab' })
+end
 
 -- [[ Abbreviations ]]
 
