@@ -108,14 +108,10 @@ vim.keymap.set({ 'n', 'v' }, 'Y', '"*y', { desc = '[Y]ank into the OS clipboard'
 
 if vim.fn.executable 'lazygit' then
   vim.keymap.set('n', '<leader>gg', function()
-    vim.cmd [[
-    tabedit new
-    set bufhidden=wipe
-    terminal lazygit
-    startinsert
-    ]]
-    vim.keymap.set('t', 'gt', '<C-\\><C-n>gt', { buffer = true, silent = true, desc = 'Exit terminal mode and switch tabs' })
-    vim.keymap.set('t', 'gT', '<C-\\><C-n>gT', { buffer = true, silent = true, desc = 'Exit terminal mode and switch tabs' })
+    local bufnr = vim.fn.bufadd 'term://lazygit'
+    vim.keymap.set('t', 'gt', '<C-\\><C-n>gt', { buffer = bufnr, silent = true, desc = 'Exit terminal mode and switch tabs' })
+    vim.keymap.set('t', 'gT', '<C-\\><C-n>gT', { buffer = bufnr, silent = true, desc = 'Exit terminal mode and switch tabs' })
+    vim.cmd('$tab sbuffer ' .. bufnr .. '|startinsert')
   end, { desc = 'Open `lazygit` in a new tab' })
 end
 
